@@ -1,7 +1,7 @@
 import React from "react";
 
-const ChartsHeaer = () => {
+const ChartsHeader = () => {
   return <div>ChartsHeader</div>;
 };
 
-export default ChartsHeaer;
+export default ChartsHeader;
