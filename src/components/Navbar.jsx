@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { BsChatLeft } from "react-icons/bs";
@@ -58,6 +58,8 @@ const Navbar = () => {
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
+  const [modal, setModal] = useState(false);
+
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
       <NavButton
@@ -90,7 +92,7 @@ const Navbar = () => {
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            onClick={() => handleClick("userProfile")}
+            onClick={() => setModal(true)}
           >
             <img
               className="rounded-full w-8 h-8"
@@ -110,7 +112,7 @@ const Navbar = () => {
         {isClicked.cart && <Cart />}
         {isClicked.chat && <Chat />}
         {isClicked.notification && <Notification />}
-        {isClicked.userProfile && <UserProfile />}
+        {modal ? <UserProfile close={() => setModal(false)} /> : null}
       </div>
     </div>
   );
